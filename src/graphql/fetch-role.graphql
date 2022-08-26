@@ -1,0 +1,8 @@
+query fetcchUsers{
+    fetchUsers{
+        id
+        name
+        lastname
+        email
+    }
+}

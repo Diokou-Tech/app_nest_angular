@@ -1,32 +1,38 @@
 <div class="container mx-auto flex justify-center items-center flex-col">
   <section class="form w-2/4 flex items-center flex-col justify-center mx-auto min-h-80">
 
-    <form class="w-3/4 p-5 min-h-80 m-4 mx-auto shadow-xl" method="post">
+    <form class="w-3/4 p-5 min-h-80 m-4 mx-auto shadow-xl" method="post" [formGroup]="loginForm" validate (ngSubmit)="login()">
       <h1 class="text-center">Authentification</h1>
       <p class="m-4">
         <label for="Email" class="bold text-gray-800 text-xl">Email</label> <br>
         <input placeholder="Votre email !" type="email" name="email" id="email" required autofocus
-        [ngClass]="inputClass" autocomplete="off">
+        [ngClass]="inputClass" autocomplete="off" formControlName="email">
       </p>
       <p class="m-4 mx-auto">
         <label for="Email" class="bold text-gray-800 text-xl">Password</label> <br>
-        <input placeholder="Votre mot de passe !" type="text" name="email" id="email" required 
-        [ngClass]="inputClass" autocomplete="off">
+        <input placeholder="Votre mot de passe !" [type]="!showPWD.value ? 'password' : 'text' " name="password" id="password" required 
+        [ngClass]="inputClass" autocomplete="off" formControlName="password">
       </p>
       <p>
-        <label for="rememberme">
-          <input class="bg-cyan-400" type="checkbox" name="rememberme" id="rememberme"> Se souvenir de moi
+        <label for="showPassword">
+          <input class="bg-cyan-400" type="checkbox" name="showPassword" id="showPassword" [formControl]="showPWD"> Afficher le mot de passe
         </label> 
       </p>
       <p>
-        <button (ngSubmit)="login" mat-raised-button class="bg-cyan-500 w-full hover:bg-cyan-600 transition ease-in-out text-white rounded-5">
+        <label for="rememberme">
+          <input class="bg-cyan-400" type="checkbox" name="rememberme" id="rememberme" [formControl]="rememberMe"> Se souvenir de moi
+        </label> 
+      </p>
+      <p>
+        <button type="submit" [disabled]="!loginForm.valid"  mat-raised-button class="bg-cyan-500 w-full hover:bg-cyan-600 transition ease-in-out text-white rounded-5">
           <mat-icon>login</mat-icon>
           Se connecter
         </button>
       </p>
       <p class="text-center">
-        <a mat-button routerLink="/frontoffice/register">Pas de compte, s'inscrire </a>
+        <a mat-button routerLink="/frontoffice/register">Pas de compte, s'inscrire &rarr; </a>
       </p>
+      
     </form>
   </section>
 </div>
