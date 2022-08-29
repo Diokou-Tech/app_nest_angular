@@ -1,26 +1,19 @@
-<header class="h1 flex justify-between bg-white items-center text-sky-700 p-2 bold container mx-auto border-b-4 border-sky-400">
+<header class="h1 flex justify-between bg-white items-center text-sky-700 p-2 bold mx-auto border-b-4 border-sky-400">
   <div class="bold text-3xl">
     App School
   </div>
   <div class="links">
-    <ul class="flex text-xl justify-evenly">
+    <ul class="flex text-xl justify-evenly items-center">
       <li class="px-4">
-          <a  class="linkIcon"  routerLink="/backoffice">
-            <img class="icon" src="../../../../assets/svg/house.svg"/>
-            Home
+          <a  class="linkIcon"  routerLink="/profil">
+            <mat-icon>person</mat-icon>
+            Profil
           </a>
         </li>
-        <li class="px-4">
-          <a class="linkIcon" routerLink="/backoffice/student" routerLinkActive="route-active">
-            <img class="icon" src="../../../../assets/svg/student.svg"/>
-            Student
-          </a>
-        </li>
-        <li class="px-4">
-          <a class="linkIcon" routerLink="/backoffice/classe" routerLinkActive="route-active">
-            <img class="icon" src="../assets/svg/classe.svg"/>
-            Classe
-          </a>
+        <li class="px-4" >
+          <button mat-button (click) ="logout()" color="primary" title="Logout">
+            <mat-icon>logout</mat-icon>
+          </button>
         </li>
     </ul>
   </div>

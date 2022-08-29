@@ -1,12 +1,15 @@
-<div class="container mx-auto flex justify-center items-center flex-col">
+<div class="container mx-auto flex justify-center items-center flex-col" style="min-height: 700px !important">
   <section class="form w-2/4 flex items-center flex-col justify-center mx-auto min-h-80">
 
-    <form class="w-3/4 p-5 min-h-80 m-4 mx-auto shadow-xl" method="post" [formGroup]="loginForm" validate (ngSubmit)="login()">
+    <form class="w-3/4 p-5 min-h-80 m-4 mx-auto shadow-2xl" method="post" [formGroup]="loginForm" validate (ngSubmit)="login()">
+      <!-- progress bar -->
+        <mat-progress-bar mode="indeterminate" color="primary" *ngIf="isLoading"></mat-progress-bar>
+      <!-- end progress bar -->
       <h1 class="text-center">Authentification</h1>
       <p class="m-4">
         <label for="Email" class="bold text-gray-800 text-xl">Email</label> <br>
-        <input placeholder="Votre email !" type="email" name="email" id="email" required autofocus
-        [ngClass]="inputClass" autocomplete="off" formControlName="email">
+        <input placeholder="Votre email !" type="email" name="email" id="email" required
+        [ngClass]="inputClass" autocomplete="off" formControlName="email" [email]="true">
       </p>
       <p class="m-4 mx-auto">
         <label for="Email" class="bold text-gray-800 text-xl">Password</label> <br>

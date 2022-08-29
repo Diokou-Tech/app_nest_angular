@@ -1,6 +1,9 @@
 <div class="container mx-auto flex justify-center items-center flex-col">
     <section class="form w-2/4 flex items-center flex-col justify-center mx-auto min-h-80">
-        <form class="w-3/4 p-5 min-h-80 m-4 mx-auto shadow-xl" method="post">
+        <form class="w-3/4 p-5 min-h-80 m-4 mx-auto shadow-xl"  (ngSubmit)="register()" validate [formGroup]="registerForm">
+            <!-- progress bar -->
+            <mat-progress-bar mode="indeterminate" color="warn" *ngIf="isLoading"></mat-progress-bar>
+            <!-- end progress bar -->
             <h1 class="text-center">Inscription</h1>
             <p class="text-center">
                 <a mat-button routerLink="/frontoffice/login">
@@ -9,35 +12,35 @@
             <p class="m-4">
                 <label for="Nom" class="bold text-gray-800 text-xl">Nom</label>
                 <br />
-                <input placeholder="Votre nom !" type="text" name="nom" id="nom" required autofocus
-                    [ngClass]="inputClass" autocomplete="off" />
+                <input placeholder="Votre nom !" type="text" name="nom" id="nom" required 
+                    [ngClass]="inputClass" autocomplete="off" formControlName="nom" minlength="2" />
             </p>
             <p class="m-4">
                 <label for="Prenom" class="bold text-gray-800 text-xl">Prenom</label>
                 <br />
-                <input placeholder="Votre prenom !" type="text" name="prenom" id="prenom" required autofocus
-                    [ngClass]="inputClass" autocomplete="off" />
+                <input placeholder="Votre prenom !" type="text" name="prenom" id="prenom" required 
+                    [ngClass]="inputClass" autocomplete="off" formControlName="prenom" minlength="2" />
             </p>
             <p class="m-4">
                 <label for="Email" class="bold text-gray-800 text-xl">Email</label>
                 <br />
-                <input placeholder="Votre email !" type="email" name="email" id="email" required autofocus
-                    [ngClass]="inputClass" autocomplete="off" />
+                <input placeholder="Votre email !" type="email" name="email" id="email" required 
+                    [ngClass]="inputClass" autocomplete="off" email="true" formControlName="email"  />
             </p>
             <p class="m-4 mx-auto">
                 <label for="Email" class="bold text-gray-800 text-xl">Password</label>
                 <br />
-                <input placeholder="Votre mot de passe !" type="text" name="email" id="email" required
-                    [ngClass]="inputClass" autocomplete="off" />
+                <input placeholder="Votre mot de passe !" type="password" name="password" id="password" required
+                    [ngClass]="inputClass" autocomplete="off" formControlName="password" />
             </p>
             <p class="m-4 mx-auto">
                 <label for="Email" class="bold text-gray-800 text-xl">Password confirmation</label>
                 <br />
-                <input placeholder="Votre mot de passe !" type="text" name="email" id="email" required
-                    [ngClass]="inputClass" autocomplete="off" />
+                <input placeholder="Confirmez Votre mot de passe !" type="password" name="confirm_password" id="confirm_password" required
+                    [ngClass]="inputClass" autocomplete="off" formControlName="confirm_password" />
             </p>
             <p>
-                <button (ngSubmit)="(register)" mat-raised-button
+                <button mat-raised-button [disabled]="!registerForm.valid"
                     class="bg-cyan-500 w-full hover:bg-cyan-600 transition ease-in-out text-white rounded-5">
                     <mat-icon>login</mat-icon>
                     S'inscrire

@@ -7,8 +7,6 @@ import { HeaderFrontComponent } from './components/header-front/header-front.com
 import {FrontofficeRoutingModule} from "./frontoffice-routing.module";
 import {SharedModule} from "../shared/shared.module";
 
-
-
 @NgModule({
   declarations: [
     IndexComponent,

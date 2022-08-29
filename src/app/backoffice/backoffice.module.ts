@@ -6,13 +6,15 @@ import { ClasseComponent } from './components/classe/classe.component';
 import { IndexComponent } from './components/index/index.component';
 import {BackofficeRoutingModule} from "./backoffice-routing.module";
 import {SharedModule} from "../shared/shared.module";
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     HeaderbackComponent,
     StudentComponent,
     ClasseComponent,
-    IndexComponent
+    IndexComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,

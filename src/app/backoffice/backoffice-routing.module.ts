@@ -8,8 +8,9 @@ import {IndexComponent} from "./components/index/index.component";
 const routes: Routes = [
   {path: '', component: IndexComponent,
     children:[
-      {path : 'student', component: StudentComponent },
-      {path: 'classe', component: ClasseComponent}
+      {path : '', component: StudentComponent, title:'Student' },
+      {path : 'student', component: StudentComponent, title:'Student' },
+      {path: 'classe', component: ClasseComponent, title: 'Classe'}
     ]
   }
 ];

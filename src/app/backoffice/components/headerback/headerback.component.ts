@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-headerback',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderbackComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private readonly router:Router
+  ) { }
 
   ngOnInit(): void {
+  }
+  logout(){
+    localStorage.setItem('isLogin','false');
+    localStorage.setItem('user','');
+    localStorage.setItem('token','');
+    this.router.navigate(['/frontoffice/login']);
   }
 
 }
