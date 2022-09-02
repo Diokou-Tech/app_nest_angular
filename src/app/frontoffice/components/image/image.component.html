@@ -1,0 +1,23 @@
+<div class="card w-2/4 flex justify-center mx-auto  text-center my-10">
+    <form action="" enctype="multipart/form-data" (ngSubmit)="uploadFile()">
+        <p>
+            <label for="name">Name of Image</label>
+            <input type="text" name="name" id="name" required minLenght="4" class="input w-full input-bordered" [formControl]="nameImage">
+        </p>
+        <label for="image"> 
+        <p class="border-4 border-cyan-400 block h-64 flex items-center cursor-pointer justify-center text-xl rounded-lg text-center mx-auto">
+            <span *ngIf="url_img">
+                <img [src]="url_img"  srcset="" width="200ppx" height="200px">
+            </span>
+            {{ filename || 'Joindre votre fichier !'}} 
+            <input type="file" name="image" [formControl]="imageFile" id="image" (change)="onFileSelected($event)" accept=".jpg,.png,.gif,.jpeg" class="file-input">
+        </p>
+        </label>
+        <p *ngIf="uploadProgress">
+            <mat-progress-bar mode="determinate" [value]="uploadProgress" color="primary"></mat-progress-bar> <small>{{uploadProgress}}%</small>
+        </p>
+        <p>
+            <button type="submit" class="btn btn-accent">Upload <mat-icon class="ml-3">send</mat-icon> </button>
+        </p>
+    </form>
+</div>

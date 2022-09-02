@@ -1,0 +1,7 @@
+mutation  deleteClasse($id: String!){
+    deleteClasse(id : $id)
+    {
+        statut
+        message
+    }
+}

@@ -1,7 +1,6 @@
 <div class="container mx-auto flex justify-center items-center flex-col" style="min-height: 700px !important">
-  <section class="form w-2/4 flex items-center flex-col justify-center mx-auto min-h-80">
-
-    <form class="w-3/4 p-5 min-h-80 m-4 mx-auto shadow-2xl" method="post" [formGroup]="loginForm" validate (ngSubmit)="login()">
+  <section class="form w-3/4 sm:w-2/4 flex items-center flex-row justify-center mx-auto min-h-80">
+    <form class="w-full card sm:w-3/4 p-5 min-h-80 m-4 mx-auto shadow-2xl" method="post" [formGroup]="loginForm" validate (ngSubmit)="login()">
       <!-- progress bar -->
         <mat-progress-bar mode="indeterminate" color="primary" *ngIf="isLoading"></mat-progress-bar>
       <!-- end progress bar -->

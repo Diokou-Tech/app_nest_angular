@@ -1,1 +1,48 @@
-<p>classe works!</p>
+<header class="flex items-center w-full justify-between">
+    <p class="w-64 flex items-center justiy-around">
+        <input type="search" name="search" placeholder="votre recherche" id="search" [ngClass]="inputClass" >
+        <button class="ml-2"><mat-icon color="primary">search</mat-icon></button>
+    </p>
+</header>
+<section>
+    <section class="flex justiy-center text-center flex-col items-center">
+        <h1> <mat-icon>plus</mat-icon> Ajout d'une classe</h1>
+        <form action="" [formGroup]="formClass"  (ngSubmit)="addClasse()">
+            <input type="hidden" name="id_classe" formControlName="id">
+            <p>
+            <label for="code">Votre code</label>
+            <input type="text" required maxlength="4" placeholder="votre code" name="code" id="code" [ngClass]="inputClass" formControlName="code">
+            </p>
+            <p>
+                <label for="nomination">Votre nomination</label>
+                <input type="text" mlength="4" required placeholder="votre nomination" name="nomination" id="nomination" formControlName="nomination" [ngClass]="inputClass">
+            </p>
+            <p>
+                <button [disabled]="!formClass.valid" mat-stroked-button color="primary" class="text-white"> <mat-icon color="primary">add</mat-icon> Add classe</button>
+            </p>
+        </form>
+    </section>
+</section>
+<section class="mt-5">
+    <table class="table-fixed border-collapse w-full text-xl text-center table-auto table-sm border border-3 border-cyan-500 p-2" >
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Code</th>
+                <th>Nomination</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listCLasses">
+                <td> {{ item.id }} </td>
+                <td>{{item.code}}</td>
+                <td>{{item.nomination}}</td>
+                <td class="text-cyan-500 flex justify-evenly">
+                    <button (click)="delete(item)"> <mat-icon>delete</mat-icon> </button>
+                    <button (click)="edit(item)"> <mat-icon>edit</mat-icon> </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

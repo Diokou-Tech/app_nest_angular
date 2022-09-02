@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { FetchUsersGQL, LoginGQL } from 'src/generated/graphql';
 import { AuthService } from 'src/services/auth.service';
 import Swal from 'sweetalert2';
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private readonly authService:AuthService,
     private readonly fetchUsers:FetchUsersGQL,
     private readonly loginGql: LoginGQL,
-    private readonly router:Router
+    private readonly router:Router,
     ) { }
   usersList:any;
   inputClass="border-3 focus:border-4 w-full transition ease-in-out focus:outline-none p-3 border rounded-5 border-cyan-400";  
@@ -59,8 +60,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   logger(data:any){
     localStorage.setItem('token',data.token);
-    localStorage.setItem('isLogin','true');
     localStorage.setItem('user',JSON.stringify(data.user));
+    this.authService._isLogin.next(true);
     this.router.navigate(["/backoffice"]);
   }
 

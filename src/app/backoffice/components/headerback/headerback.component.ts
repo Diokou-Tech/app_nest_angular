@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/services/auth.service';
 
 @Component({
   selector: 'app-headerback',
@@ -9,13 +10,14 @@ import { Router } from '@angular/router';
 export class HeaderbackComponent implements OnInit {
 
   constructor(
-    private readonly router:Router
+    private readonly router:Router,
+    private readonly authService:AuthService
   ) { }
 
   ngOnInit(): void {
   }
   logout(){
-    localStorage.setItem('isLogin','false');
+    this.authService._isLogin.next(false);
     localStorage.setItem('user','');
     localStorage.setItem('token','');
     this.router.navigate(['/frontoffice/login']);

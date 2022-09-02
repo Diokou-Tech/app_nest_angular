@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class StudentComponent implements OnInit {
 
   constructor() { }
+  inputClass="border-3 focus:border-4 w-full transition ease-in-out focus:outline-none p-1 border rounded-lg border-cyan-400";  
 
   ngOnInit(): void {
   }

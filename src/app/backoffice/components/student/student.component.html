@@ -1,1 +1,38 @@
-<p>student works!</p>
+<header class="flex items-center w-full justify-between">
+    <p class="w-64 flex items-center justiy-around">
+        <input type="search" name="search" placeholder="votre recherche" id="search" [ngClass]="inputClass" >
+        <button class="ml-2"><mat-icon color="primary">search</mat-icon></button>
+    </p>
+</header>
+<section class="mt-5">
+    <table class="table w-full text-xl text-center table-auto table-sm  p-2" >
+        <thead>
+            <tr class="border-collapse border">
+                <th>id</th>
+                <th>Matricule</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Date de naissance</th>
+                <th>Sexe</th>
+                <th>Classe</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="border-collapse border">
+                <td>1</td>
+                <td>20150436</td>
+                <td>DIOKOU</td>
+                <td>Cheikhou</td>
+                <td>1996-02-10</td>
+                <td>Homme</td>
+                <td>Master 2</td>
+                <td class="text-cyan-500 flex justify-evenly">
+                    <button> <mat-icon>delete</mat-icon> </button>
+                    <button> <mat-icon>edit</mat-icon> </button>
+                    <button> <mat-icon>send</mat-icon> </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

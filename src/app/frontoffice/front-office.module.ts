@@ -6,13 +6,15 @@ import { RegisterComponent } from './components/register/register.component';
 import { HeaderFrontComponent } from './components/header-front/header-front.component';
 import {FrontofficeRoutingModule} from "./frontoffice-routing.module";
 import {SharedModule} from "../shared/shared.module";
+import { ImageComponent } from './components/image/image.component';
 
 @NgModule({
   declarations: [
     IndexComponent,
     LoginComponent,
     RegisterComponent,
-    HeaderFrontComponent
+    HeaderFrontComponent,
+    ImageComponent
   ],
   imports: [
     CommonModule,

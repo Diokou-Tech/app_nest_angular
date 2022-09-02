@@ -1,0 +1,7 @@
+mutation classeAdd($classeinput: classesInput!){
+    createClasse(classeInput: $classeinput ){
+        id
+        code
+        nomination
+    }
+}

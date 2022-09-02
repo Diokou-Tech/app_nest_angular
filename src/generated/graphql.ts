@@ -232,6 +232,25 @@ export type UserModel = {
   role: Scalars['String'];
 };
 
+export type ClasseAddMutationVariables = Exact<{
+  classeinput: ClassesInput;
+}>;
+
+
+export type ClasseAddMutation = { __typename?: 'Mutation', createClasse: { __typename?: 'classesModel', id?: string | null, code?: string | null, nomination?: string | null } };
+
+export type DeleteClasseMutationVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type DeleteClasseMutation = { __typename?: 'Mutation', deleteClasse: { __typename?: 'MessageModel', statut: boolean, message: string } };
+
+export type FetchCLassesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type FetchCLassesQuery = { __typename?: 'Query', findClasses: Array<{ __typename?: 'classesModel', id?: string | null, code?: string | null, nomination?: string | null }> };
+
 export type FetchUsersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -251,6 +270,65 @@ export type RegisterMutationVariables = Exact<{
 
 export type RegisterMutation = { __typename?: 'Mutation', register: { __typename?: 'authModel', token: string, user: { __typename?: 'userModel', name: string, email: string, lastname: string, active: boolean, role: string } } };
 
+export const ClasseAddDocument = gql`
+    mutation classeAdd($classeinput: classesInput!) {
+  createClasse(classeInput: $classeinput) {
+    id
+    code
+    nomination
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class ClasseAddGQL extends Apollo.Mutation<ClasseAddMutation, ClasseAddMutationVariables> {
+    override document = ClasseAddDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const DeleteClasseDocument = gql`
+    mutation deleteClasse($id: String!) {
+  deleteClasse(id: $id) {
+    statut
+    message
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class DeleteClasseGQL extends Apollo.Mutation<DeleteClasseMutation, DeleteClasseMutationVariables> {
+    override document = DeleteClasseDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const FetchCLassesDocument = gql`
+    query fetchCLasses {
+  findClasses {
+    id
+    code
+    nomination
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class FetchCLassesGQL extends Apollo.Query<FetchCLassesQuery, FetchCLassesQueryVariables> {
+    override document = FetchCLassesDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
 export const FetchUsersDocument = gql`
     query fetchUsers {
   fetchUsers {

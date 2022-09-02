@@ -7,7 +7,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "codegen": "graphql-codegen --config codegen.yml"
+    "codegen": "graphql-codegen --config codegen.yml",
+    "dev": "run-p start graphql-gen:watch",
+    "graphql-gen": "graphql-codegen --config codegen.yml --require dotenv/config",
+    "codegen:watch": "graphql-codegen --config codegen.yml --require dotenv/config --watch"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +27,7 @@
     "@apollo/client": "^3.6.9",
     "@graphql-codegen/cli": "^2.11.8",
     "apollo-angular": "^4.0.1",
+    "daisyui": "^2.24.0",
     "graphql": "^16.6.0",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.4.29",
@@ -34,6 +38,11 @@
     "@angular-devkit/build-angular": "^14.1.0",
     "@angular/cli": "~14.1.0",
     "@angular/compiler-cli": "^14.1.0",
+    "@graphql-codegen/cli": "2.11.8",
+    "@graphql-codegen/introspection": "2.2.1",
+    "@graphql-codegen/typescript": "2.7.3",
+    "@graphql-codegen/typescript-apollo-angular": "3.5.3",
+    "@graphql-codegen/typescript-operations": "2.5.3",
     "@tailwindcss/forms": "^0.5.2",
     "@types/jasmine": "~4.0.0",
     "autoprefixer": "^10.4.8",
@@ -43,13 +52,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8",
-    "typescript": "~4.7.2",
-    "@graphql-codegen/typescript-apollo-angular": "3.5.3",
-    "@graphql-codegen/typescript": "2.7.3",
-    "@graphql-codegen/typescript-operations": "2.5.3",
-    "@graphql-codegen/introspection": "2.2.1",
-    "@graphql-codegen/cli": "2.11.8"
+    "typescript": "~4.7.2"
   }
 }
