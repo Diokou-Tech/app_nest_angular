@@ -2,6 +2,7 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { finalize, Subscription, tap } from 'rxjs';
+import { IResult } from 'src/app/interfaces/result';
 
 @Component({
   selector: 'app-image',
@@ -40,10 +41,14 @@ export class ImageComponent implements OnInit {
     }
   }
   uploadFile(){
+    if(this.nameImage.value == ''){
+      alert('Erreur veuillez remplir le nom du fichier !');
+    }else{
+
     const name = this.nameImage.value ?? '';
     this.formData.append('name', name);
 
-    const upload = this.httpClient.post('http://localhost:3000/image/',this.formData,{
+    const upload = this.httpClient.post<IResult>('http://localhost:3000/image/',this.formData,{
       reportProgress: true,
       observe: 'events',
     });
@@ -54,15 +59,20 @@ export class ImageComponent implements OnInit {
         this.uploadProgress = Math.round((100 / (data.total || 0) * data.loaded));
         console.log({ 'uploadProgess' : this.uploadProgress});
       }else if (data.type == HttpEventType.Response){
-        console.log({"data" : data.body})
+        const result = data.body;
+        console.log(result?.message);
+        alert(result?.message);
         this.reset()
       }
     },(error) =>{
         console.log({"error" : error.error});
+        const errorResult = error.error;
+        alert(errorResult.message); 
         this.uploadProgress=0;
         this.reset()
       }
       );
+    }
   }
 
   reset(){

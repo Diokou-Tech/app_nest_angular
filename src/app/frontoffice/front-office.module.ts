@@ -7,6 +7,7 @@ import { HeaderFrontComponent } from './components/header-front/header-front.com
 import {FrontofficeRoutingModule} from "./frontoffice-routing.module";
 import {SharedModule} from "../shared/shared.module";
 import { ImageComponent } from './components/image/image.component';
+import { ChartjsComponent } from './components/chartjs/chartjs.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ImageComponent } from './components/image/image.component';
     LoginComponent,
     RegisterComponent,
     HeaderFrontComponent,
-    ImageComponent
+    ImageComponent,
+    ChartjsComponent
   ],
   imports: [
     CommonModule,
