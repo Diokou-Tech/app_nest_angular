@@ -7,6 +7,7 @@ import {MatButtonModule} from "@angular/material/button";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatDividerModule} from '@angular/material/divider';
+import { NgChartsModule } from 'ng2-charts';
 @NgModule({
   exports:[
     MatIconModule,
@@ -16,7 +17,8 @@ import {MatDividerModule} from '@angular/material/divider';
     FormsModule,
     ReactiveFormsModule,
     MatProgressBarModule,
-    MatDividerModule
+    MatDividerModule,
+    NgChartsModule
   ],
   declarations: [],
   imports: [

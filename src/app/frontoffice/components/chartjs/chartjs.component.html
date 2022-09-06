@@ -2,13 +2,33 @@
     <h1>Charts Js Examples</h1>
     <div class="flex sm:flex-row text-center w-full p-5 sm:justify-around">
         <div class="w-1/4 card shadow-lg border h-96">
-            1
+            <div style="display: block;">
+                <canvas baseChart width="400" height="300"
+                  [type]="'line'"
+                  [data]="lineChartData"
+                  [options]="lineChartOptions"
+                  [legend]="lineChartLegend">
+                </canvas>
+              </div>
         </div>
         <div class="w-1/4 card shadow-lg border h-96">
-            2   
+            <h3 class="text-center">Diagramme en barre des ventes 2006 - 2012</h3>
+            <canvas baseChart width="400" height="200"
+            [data]="barChartData"
+            [options]="barChartOptions"
+            [plugins]="barChartPlugins"
+            [legend]="barChartLegend"
+            [type]="'bar'">
+            </canvas>    
         </div>        
         <div class="w-1/4 card shadow-lg border h-96">
-            3    
+            <div style="display:block">
+                <canvas baseChart
+                [data]="doughnutChartData"
+                [type]="doughnutChartType"
+                >
+                </canvas>
+            </div>
         </div>
     </div>
 </div>
